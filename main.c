@@ -6,36 +6,54 @@
 /*   By: mcollas <mcollas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 17:33:03 by mcollas           #+#    #+#             */
-/*   Updated: 2023/12/26 18:28:25 by mcollas          ###   ########.fr       */
+/*   Updated: 2023/12/27 18:50:33 by mcollas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-void	ft_push_swap(int *tab, int size)
+char	**ft_sort_arg(int argc, char **argv)
 {
+	int		i;
+	char	**arg;
+
+	if (argc == 2)
+		arg = ft_split(argv[1]);
+	else
+	{
+		arg = malloc((argc) * sizeof(char *));
+		if (!arg)
+			return (NULL);
+		i = 0;
+		while (i < (argc - 1))
+		{
+			arg[i] = malloc((ft_strlen(argv[i + 1]) + 1) * sizeof(char));
+			if (!arg)
+				return (NULL);
+			ft_strcpy(arg[i], argv[i + 1]);
+			i++;
+		}
+		arg[i] = NULL;
+	}
+	return (arg);
 }
 
 int	main(int argc, char **argv)
 {
-	int	*tab;
-	int	my_int;
-	int	i;
+	char	**tab;
+	int		i;
 
-	tab = malloc(argc + 1 * sizeof(int));
-	if (!tab)
-		return (NULL);
-	i = 1;
-	while (i <= argc)
+	i = 0;
+	if (argc > 1)
 	{
-		my_int = ft_atoi(argv[i]);
-		if (my_int == '0' && argv[i] != "0")
+		tab = ft_sort_arg(argc, argv);
+		while (tab[i])
 		{
-			write(1, "Error", 5);
-			return (free(line), 0);
+			printf("%s\n", tab[i]);
+			free(tab[i]);
+			i++;
 		}
-		tab[i++] = my_int;
+		free(tab);
 	}
-    tab[i] = NULL;
-    ft_push_swap(tab, argc)
+	return (0);
 }

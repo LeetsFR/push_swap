@@ -6,13 +6,55 @@
 /*   By: mcollas <mcollas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 17:18:36 by mcollas           #+#    #+#             */
-/*   Updated: 2023/12/26 18:25:29 by mcollas          ###   ########.fr       */
+/*   Updated: 2023/12/27 18:50:55 by mcollas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-int	ft_atoi(const char *str)
+char	*ft_strcpy(char *dest, const char *source)
+{
+	int	i;
+
+	i = 0;
+	while (source[i])
+	{
+		dest[i] = source[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}
+
+char	*ft_strdup(const char *str)
+{
+	int		i;
+	char	*dup;
+
+	dup = malloc((ft_strlen(str) + 1) * sizeof(char));
+	if (!dup)
+		return (NULL);
+	i = 0;
+	while (str[i])
+	{
+		dup[i] = str[i];
+		i++;
+	}
+	dup[i] = '\0';
+	return (dup);
+}
+
+unsigned int	ft_strlen(char const *str)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
+long	ft_atol(const char *str)
 {
 	int	i;
 	int	is_positive;
