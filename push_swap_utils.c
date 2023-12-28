@@ -6,7 +6,7 @@
 /*   By: mcollas <mcollas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 17:18:36 by mcollas           #+#    #+#             */
-/*   Updated: 2023/12/27 18:50:55 by mcollas          ###   ########.fr       */
+/*   Updated: 2023/12/28 02:28:23 by mcollas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,16 @@ unsigned int	ft_strlen(char const *str)
 
 	i = 0;
 	while (str[i])
+		i++;
+	return (i);
+}
+
+unsigned int	ft_arraylen(char **array)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (array[i])
 		i++;
 	return (i);
 }

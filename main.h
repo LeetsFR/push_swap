@@ -6,7 +6,7 @@
 /*   By: mcollas <mcollas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 18:10:20 by mcollas           #+#    #+#             */
-/*   Updated: 2023/12/27 18:03:25 by mcollas          ###   ########.fr       */
+/*   Updated: 2023/12/28 02:28:50 by mcollas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char			*ft_strcpy(char *dest, const char *source);
 char			*ft_strdup(const char *str);
 unsigned int	ft_strlen(char const *str);
 long			ft_atol(const char *str);
-
+unsigned int	ft_arraylen(char **array);
 // push_swap_split.c
 int				ft_count_word(const char *str);
 int				ft_next_strlen(const char *str);
