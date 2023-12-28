@@ -6,7 +6,7 @@
 /*   By: mcollas <mcollas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 17:18:36 by mcollas           #+#    #+#             */
-/*   Updated: 2023/12/28 02:28:23 by mcollas          ###   ########.fr       */
+/*   Updated: 2023/12/28 18:14:52 by mcollas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ unsigned int	ft_arraylen(char **array)
 
 long	ft_atol(const char *str)
 {
-	int	i;
-	int	is_positive;
-	int	result;
+	int		i;
+	int		is_positive;
+	long	result;
 
 	result = 0;
 	i = 0;

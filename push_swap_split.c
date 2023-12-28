@@ -6,7 +6,7 @@
 /*   By: mcollas <mcollas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 15:58:18 by mcollas           #+#    #+#             */
-/*   Updated: 2023/12/27 18:50:43 by mcollas          ###   ########.fr       */
+/*   Updated: 2023/12/28 17:32:32 by mcollas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,16 @@ void	ft_next_strcpy(const char *source, char *dest)
 	dest[j] = '\0';
 }
 
+void	ft_free_array(char **arr)
+{
+	int	i;
+
+	i = ft_arraylen(arr);
+	while (i >= 0)
+		free(arr[i--]);
+	free(arr);
+}
+
 char	**ft_split(const char *str)
 {
 	int		i;
@@ -81,11 +91,7 @@ char	**ft_split(const char *str)
 	{
 		split[i] = malloc((ft_next_strlen(str) + 1) * sizeof(char));
 		if (!split[i])
-		{
-			while (i >= 0)
-				free(split[i--]);
-			return (free(split), NULL);
-		}
+			return (ft_free_array(split), NULL);
 		ft_next_strcpy(str, split[i++]);
 	}
 	split[i] = NULL;
