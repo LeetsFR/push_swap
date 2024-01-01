@@ -6,7 +6,7 @@
 /*   By: mcollas <mcollas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 17:18:36 by mcollas           #+#    #+#             */
-/*   Updated: 2023/12/28 18:14:52 by mcollas          ###   ########.fr       */
+/*   Updated: 2023/12/31 00:05:29 by mcollas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ unsigned int	ft_arraylen(char **array)
 {
 	unsigned int	i;
 
+	if (!array)
+		return (0);
 	i = 0;
 	while (array[i])
 		i++;
@@ -81,8 +83,10 @@ long	ft_atol(const char *str)
 			is_positive *= -1;
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
+	while (str[i])
 	{
+		if (!(str[i] >= '0' && str[i] <= '9'))
+			return (0);
 		result *= 10;
 		result += str[i] - '0';
 		i++;
