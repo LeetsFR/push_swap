@@ -6,7 +6,7 @@
 /*   By: mcollas <mcollas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 13:31:22 by mcollas           #+#    #+#             */
-/*   Updated: 2023/12/28 17:25:09 by mcollas          ###   ########.fr       */
+/*   Updated: 2024/01/10 15:15:04 by mcollas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,5 @@ int	ft_iszero(long nbr, char *str)
 		if (ft_strcmp(str, "0") && ft_strcmp(str, "+0") && ft_strcmp(str, "-0"))
 			return (1);
 	}
-    return (0);
+	return (0);
 }

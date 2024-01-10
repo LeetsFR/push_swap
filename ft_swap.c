@@ -6,51 +6,36 @@
 /*   By: mcollas <mcollas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 00:25:11 by mcollas           #+#    #+#             */
-/*   Updated: 2023/12/31 03:21:57 by mcollas          ###   ########.fr       */
+/*   Updated: 2024/01/10 17:52:14 by mcollas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-void ft_sa(long *stack, int size)
+void	ft_sa(t_stack *stack)
 {
-    long tmp;
+	long	tmp;
 
-    if(size < 2)
-        return;
-    tmp = stack[0];
-    stack[0] = stack[1];
-    stack[1] = tmp;
-    printf("sa");
-}
-    
-void ft_sb(long *stack, int size)
-{
-    long tmp;
-
-    if(size < 2)
-        return;
-    tmp = stack[0];
-    stack[0] = stack[1];
-    stack[1] = tmp;
-    printf("sb");
+	if (stack.size < 2)
+		return ;
+	tmp = stack.tab[0];
+	stack.tab[0] = stack.tab[1];
+	stack.tab[1] = tmp;
 }
 
-void ft_ss(long *stack_a,long stack_b, int size)
+void	ft_sb(t_stack *stack)
 {
-   long tmp;
+	long	tmp;
 
-   if(size < 2)
-        return;
-    tmp = stack_a[0];
-    stack_a[0] = stack_a[1];
-    stack_a[1] = tmp;
-
-    tmp = stack_b[0];
-    stack_b[0] = stack_b[1];
-    stack_b[1] = tmp;
-    printf("ss");
-
+	if (stack.size < 2)
+		return ;
+	tmp = stack.tab[0];
+	stack.tab[0] = stack.tab[1];
+	stack.tab[1] = tmp;
 }
 
-
+void	ft_ss(t_stack *stack_a, t_stack *stack_b)
+{
+	ft_sa(stack_a);
+	ft_sb(stack_b);
+}

@@ -6,52 +6,56 @@
 /*   By: mcollas <mcollas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 17:33:03 by mcollas           #+#    #+#             */
-/*   Updated: 2023/12/30 23:59:08 by mcollas          ###   ########.fr       */
+/*   Updated: 2024/01/10 19:47:58 by mcollas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-long	*ft_no_duplicate(long *stack, int size)
+e_bool	ft_no_duplicate(t_stack *stack)
 {
 	int		i;
 	int		j;
 	long	tmp;
 
-	if (!stack)
-		return (NULL);
+	if (!stack->tab)
+		return (false);
 	i = -1;
-	while (++i < size)
+	while (++i < stack->size)
 	{
-		tmp = stack[i];
+		tmp = stack->tab[i];
 		if (tmp > INT_MAX || tmp < INT_MIN)
-			return (free(stack), NULL);
+			return (free(stack->tab), false);
 		j = i;
-		while (++j < size)
+		while (++j < stack->size)
 		{
-			if (tmp == stack[j])
-				return ((free(stack), NULL));
+			if (tmp == stack->tab[j])
+				return ((free(stack->tab), false));
 		}
 	}
-	return (stack);
+	return (true);
 }
 
-long	*ft_long_stack(char **arr)
+t_stack	ft_long_stack(char **arr)
 {
 	int		i;
 	long	tmp;
-	long	*stack;
+	t_stack	stack;
 
 	if (!arr)
-		return (NULL);
-	stack = malloc(ft_arraylen(arr) * sizeof(long));
+	{
+		stack.tab = NULL;
+		return (stack);
+	}
+	stack.size = ft_arraylen(arr);
+	stack.tab = malloc(stack.size * sizeof(long));
 	i = -1;
 	while (arr[++i])
 	{
 		tmp = ft_atol(arr[i]);
 		if (ft_iszero(tmp, arr[i]))
-			return (ft_free_array(arr), free(stack), NULL);
-		stack[i] = tmp;
+			return (ft_free_array(arr), free(stack.tab), stack);
+		stack.tab[i] = tmp;
 	}
 	return (ft_free_array(arr), stack);
 }
@@ -104,16 +108,13 @@ char	**ft_sort_arg(int argc, char **argv)
 	return (arg);
 }
 
-long	*my_stack_a(int argc, char **argv, int *size)
+t_stack	my_stack_a(int argc, char **argv)
 {
 	char	**arr;
-	long	*stack;
+	t_stack	stack;
 
-	// return size of stack
 	arr = ft_sort_wrong_arg(ft_sort_arg(argc, argv));
-	*size = ft_arraylen(arr);
-	stack = ft_no_duplicate(ft_long_stack(arr), *size);
-	if (!stack)
-		return (0);
+	stack = ft_long_stack(arr);
+	ft_no_duplicate(&stack);
 	return (stack);
 }
