@@ -6,7 +6,7 @@
 /*   By: mcollas <mcollas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 18:10:20 by mcollas           #+#    #+#             */
-/*   Updated: 2024/01/10 19:39:46 by mcollas          ###   ########.fr       */
+/*   Updated: 2024/01/15 14:51:18 by mcollas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,13 @@ typedef enum
 	true
 }				e_bool;
 
+typedef struct Index_Count
+{
+	int			index_a;
+    int         index_b;
+	int			cost;
+}				t_count;
+
 typedef struct Stack
 {
 	int			size;
@@ -34,8 +41,8 @@ typedef struct Stack
 
 // create_stack_a.c
 e_bool			ft_no_duplicate(t_stack *stack);
-t_stack			ft_long_stack(char **arr);
-char			**ft_sort_wrong_arg(char **arr);
+e_bool			ft_long_stack(char **arr, t_stack *stack);
+e_bool			ft_sort_wrong_arg(char **arr);
 char			**ft_sort_arg(int argc, char **argv);
 t_stack			my_stack_a(int argc, char **argv);
 
@@ -49,6 +56,7 @@ unsigned int	ft_arraylen(char **array);
 // push_swap_utils_2.c
 int				ft_strcmp(char *str1, char *str2);
 int				ft_iszero(long nbr, char *str);
+void			ft_putstr(char *str);
 
 // push_swap_split.c
 int				ft_count_word(const char *str);

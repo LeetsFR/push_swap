@@ -6,7 +6,7 @@
 /*   By: mcollas <mcollas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 17:33:03 by mcollas           #+#    #+#             */
-/*   Updated: 2024/01/10 19:47:58 by mcollas          ###   ########.fr       */
+/*   Updated: 2024/01/14 16:57:17 by mcollas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ e_bool	ft_no_duplicate(t_stack *stack)
 	int		j;
 	long	tmp;
 
-	if (!stack->tab)
-		return (false);
 	i = -1;
 	while (++i < stack->size)
 	{
@@ -36,38 +34,34 @@ e_bool	ft_no_duplicate(t_stack *stack)
 	return (true);
 }
 
-t_stack	ft_long_stack(char **arr)
+e_bool	ft_long_stack(char **arr, t_stack *stack)
 {
 	int		i;
 	long	tmp;
-	t_stack	stack;
 
 	if (!arr)
-	{
-		stack.tab = NULL;
-		return (stack);
-	}
-	stack.size = ft_arraylen(arr);
-	stack.tab = malloc(stack.size * sizeof(long));
+		return (false);
+	stack->size = ft_arraylen(arr);
+	stack->tab = malloc(stack->size * sizeof(long));
 	i = -1;
 	while (arr[++i])
 	{
 		tmp = ft_atol(arr[i]);
 		if (ft_iszero(tmp, arr[i]))
-			return (ft_free_array(arr), free(stack.tab), stack);
-		stack.tab[i] = tmp;
+			return (ft_free_array(arr), free(stack->tab), false);
+		stack->tab[i] = tmp;
 	}
-	return (ft_free_array(arr), stack);
+	return (ft_free_array(arr), true);
 }
 
-char	**ft_sort_wrong_arg(char **arr)
+e_bool	ft_sort_wrong_arg(char **arr)
 {
 	int	i;
 	int	j;
 	int	len;
 
 	if (!arr)
-		return (NULL);
+		return (false);
 	i = -1;
 	while (arr[++i])
 	{
@@ -76,11 +70,11 @@ char	**ft_sort_wrong_arg(char **arr)
 		while (arr[i][++j])
 		{
 			if (len > LEN_INT_MIN)
-				return (ft_free_array(arr), NULL);
+				return (ft_free_array(arr), false);
 			len++;
 		}
 	}
-	return (arr);
+	return (true);
 }
 
 char	**ft_sort_arg(int argc, char **argv)
@@ -98,7 +92,7 @@ char	**ft_sort_arg(int argc, char **argv)
 		i = -1;
 		while (++i < (argc - 1))
 		{
-			arg[i] = malloc((ft_strlen(argv[i + 1] + 1) * sizeof(char)));
+			arg[i] = malloc((ft_strlen(argv[i + 1]) + 1) * sizeof(char));
 			if (!arg)
 				return (ft_free_array(arg), NULL);
 			ft_strcpy(arg[i], argv[i + 1]);
@@ -113,8 +107,11 @@ t_stack	my_stack_a(int argc, char **argv)
 	char	**arr;
 	t_stack	stack;
 
-	arr = ft_sort_wrong_arg(ft_sort_arg(argc, argv));
-	stack = ft_long_stack(arr);
-	ft_no_duplicate(&stack);
+	stack.tab = NULL;
+	arr = ft_sort_arg(argc, argv);
+	if (!arr || !ft_sort_wrong_arg(arr))
+		return (stack);
+	if (!ft_long_stack(arr, &stack) || !ft_no_duplicate(&stack))
+		stack.tab = NULL;
 	return (stack);
 }
