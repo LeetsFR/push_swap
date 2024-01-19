@@ -6,7 +6,7 @@
 /*   By: mcollas <mcollas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 18:10:20 by mcollas           #+#    #+#             */
-/*   Updated: 2024/01/15 14:51:18 by mcollas          ###   ########.fr       */
+/*   Updated: 2024/01/19 00:49:18 by mcollas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,17 @@ typedef enum
 	true
 }				e_bool;
 
-typedef struct Index_Count
+typedef struct Index_Stack
 {
-	int			index_a;
-    int         index_b;
-	int			cost;
-}				t_count;
-
+    int index_a;
+    int index_b;
+}   t_index;
 typedef struct Stack
 {
 	int			size;
 	long		*tab;
+	long		min;
+	long		max;
 }				t_stack;
 
 // create_stack_a.c
