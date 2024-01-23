@@ -6,7 +6,7 @@
 /*   By: mcollas <mcollas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 23:40:43 by mcollas           #+#    #+#             */
-/*   Updated: 2024/01/19 01:52:35 by mcollas          ###   ########.fr       */
+/*   Updated: 2024/01/23 15:12:25 by mcollas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ void	ft_print_tab(t_stack *a, t_stack *b)
 	printf("\n");
 }
 
-int	next_push(t_stack *a, t_stack *b)
+t_index	next_push(t_stack *a, t_stack *b)
 {
 	int		i;
 	t_index	next;
-	int		tmp;
+	t_index	tmp;
 
 	i = -1;
 	next.cost = INT_MAX;
@@ -45,21 +45,39 @@ int	next_push(t_stack *a, t_stack *b)
 	return (next);
 }
 
-void	push(t_index *next, t_stack *a, t_stack *b)
+void	ft_sort_a(t_stack *a)
 {
-	if(
+	if (a->tab[0] > a->tab[1] && (a->tab[0] > a->tab[2])
+		&& (a->tab[1] < a->tab[2]))
+		ft_rra(a);
+	if (a->tab[0] > a->tab[1])
+		ft_sa(a);
+	if (a->tab[0] > a->tab[2])
+		ft_rra(a);
+	if (a->tab[1] > a->tab[2])
+	{
+		ft_ra(a);
+		ft_sa(a);
+	}
+	if (a->tab[2] < a->tab[0])
+		ft_rra(a);
 }
+
 void	push_swap(t_stack *a, t_stack *b)
 {
 	t_index	next;
 
-	if (a->size > 5)
-		ft_firs_pb(a, b);
-	while (a->size > 3)
+	if (a->size > 3)
 	{
-		next = next_push(a, b);
-		push(next);
+		ft_pb(a, b);
+		ft_pb(a, b);
+		while (a->size > 3)
+		{
+			next = next_push(a, b);
+			push(&next, a, b);
+		}
 	}
+	ft_sort_a(a);
 }
 
 int	main(int argc, char **argv)

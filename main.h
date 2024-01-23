@@ -6,7 +6,7 @@
 /*   By: mcollas <mcollas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 18:10:20 by mcollas           #+#    #+#             */
-/*   Updated: 2024/01/19 00:49:18 by mcollas          ###   ########.fr       */
+/*   Updated: 2024/01/23 00:59:56 by mcollas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,27 @@ typedef enum
 
 typedef struct Index_Stack
 {
-    int index_a;
-    int index_b;
-}   t_index;
+	int			index_a;
+	int			index_b;
+	int			cost;
+}				t_index;
+
 typedef struct Stack
 {
 	int			size;
 	long		*tab;
-	long		min;
-	long		max;
 }				t_stack;
+
+// ft_next_push.c
+void			push_in_top(t_index *next, t_stack *a, t_stack *b);
+void			push_in_bottom(t_index *next, t_stack *a, t_stack *b);
+void			push(t_index *next, t_stack *a, t_stack *b);
+
+// ft_cost.c
+e_bool			in_top_index(t_index *idx, t_stack *a, t_stack *b);
+e_bool			in_bottom_index(t_index *idx, t_stack *a, t_stack *b);
+int				find_cost(t_index *my_index, t_stack *a, t_stack *b);
+t_index			ft_cost(int index_a, t_stack *a, t_stack *b);
 
 // create_stack_a.c
 e_bool			ft_no_duplicate(t_stack *stack);
