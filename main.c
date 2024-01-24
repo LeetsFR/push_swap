@@ -6,7 +6,7 @@
 /*   By: mcollas <mcollas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 23:40:43 by mcollas           #+#    #+#             */
-/*   Updated: 2024/01/23 15:12:25 by mcollas          ###   ########.fr       */
+/*   Updated: 2024/01/24 16:31:25 by mcollas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ void	ft_print_tab(t_stack *a, t_stack *b)
 	i = -1;
 	printf("A = ");
 	while (++i < a->size)
-		printf("%ld ", a->tab[i]);
+		printf("%ld\n", a->tab[i]);
 	printf("\n");
 	i = -1;
 	printf("B = ");
 	while (++i < b->size)
-		printf("%ld ", b->tab[i]);
+		printf("%ld\n ", b->tab[i]);
 	printf("\n");
 }
 

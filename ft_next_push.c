@@ -6,7 +6,7 @@
 /*   By: mcollas <mcollas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:46:44 by mcollas           #+#    #+#             */
-/*   Updated: 2024/01/23 15:18:02 by mcollas          ###   ########.fr       */
+/*   Updated: 2024/01/24 14:32:48 by mcollas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,9 @@ void	push_in_bottom(t_index *next, t_stack *a, t_stack *b)
 
 void	push(t_index *next, t_stack *a, t_stack *b)
 {
-	if (in_top_index(next, a, b))
+	if (in_top_index(next, a, b) || in_inter_top_index(next,a,b))
 		push_in_top(next, a, b);
-	else if (in_bottom_index(next, a, b))
+	else if (in_bottom_index(next, a, b)|| in_inter_bottom_index(next,a,b))
 		push_in_bottom(next, a, b);
 	else
 		printf("WE NEED THIS LINE");
