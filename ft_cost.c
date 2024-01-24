@@ -6,7 +6,7 @@
 /*   By: mcollas <mcollas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 00:29:45 by mcollas           #+#    #+#             */
-/*   Updated: 2024/01/24 16:15:19 by mcollas          ###   ########.fr       */
+/*   Updated: 2024/01/24 16:46:15 by mcollas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,12 @@ e_bool	in_bottom_index(t_index *idx, t_stack *a, t_stack *b)
 
 e_bool	in_inter_top_index(t_index *idx, t_stack *a, t_stack *b)
 {
-	if (idx->index_a < (a->size / 2) && (idx->index_b
-			- idx->index_a) < (b->size - idx->index_b))
-	{
-		printf("TOPINTER=1\n");
+	if (idx->index_a < (a->size / 2) && (idx->index_b - idx->index_a) < (b->size
+			- idx->index_b))
 		return (true);
-	}
-	if (idx->index_b <= (b->size / 2) && (idx->index_a
-			- idx->index_b) <= (a->size - idx->index_a))
-	{
-		printf("TOPINTER=2\n");
+	if (idx->index_b < (b->size / 2) && (idx->index_a - idx->index_a) < (a->size
+			- idx->index_a))
 		return (true);
-	}
 	return (false);
 }
 
@@ -58,8 +52,7 @@ e_bool	in_inter_bottom_index(t_index *idx, t_stack *a, t_stack *b)
 		printf("BOTTOMINTER=1\n");
 		return (true);
 	}
-	if (idx->index_b > (b->size / 2) && (idx->index_a - idx->index_b) > (a->size
-			- idx->index_a))
+	if (idx->index_b > (b->size / 2) && (a->size - idx->index_b) > idx->index_a)
 	{
 		printf("BOTTOMINTER=2\n");
 		return (true);
