@@ -6,7 +6,7 @@
 /*   By: mcollas <mcollas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 00:29:45 by mcollas           #+#    #+#             */
-/*   Updated: 2024/01/24 16:46:15 by mcollas          ###   ########.fr       */
+/*   Updated: 2024/01/25 15:57:29 by mcollas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ e_bool	in_bottom_index(t_index *idx, t_stack *a, t_stack *b)
 	return (false);
 }
 
-e_bool	in_inter_top_index(t_index *idx, t_stack *a, t_stack *b)
+e_bool	in_inter_top_idx(t_index *idx, t_stack *a, t_stack *b)
 {
 	if (idx->index_a < (a->size / 2) && (idx->index_b - idx->index_a) < (b->size
 			- idx->index_b))
@@ -45,18 +45,12 @@ e_bool	in_inter_top_index(t_index *idx, t_stack *a, t_stack *b)
 	return (false);
 }
 
-e_bool	in_inter_bottom_index(t_index *idx, t_stack *a, t_stack *b)
+e_bool	in_inter_bottom_idx(t_index *idx, t_stack *a, t_stack *b)
 {
 	if (idx->index_a > (a->size / 2) && (b->size - idx->index_a) < idx->index_b)
-	{
-		printf("BOTTOMINTER=1\n");
 		return (true);
-	}
 	if (idx->index_b > (b->size / 2) && (a->size - idx->index_b) > idx->index_a)
-	{
-		printf("BOTTOMINTER=2\n");
 		return (true);
-	}
 	return (false);
 }
 
@@ -64,15 +58,14 @@ int	find_cost(t_index *my_index, t_stack *a, t_stack *b)
 {
 	int	cost;
 
-	if (in_top_index(my_index, a, b) || in_inter_top_index(my_index, a, b))
+	if (in_top_index(my_index, a, b) || in_inter_top_idx(my_index, a, b))
 	{
 		if (my_index->index_a > my_index->index_b)
 			cost = my_index->index_a;
 		else
 			cost = my_index->index_b;
 	}
-	else if (in_bottom_index(my_index, a, b) || in_inter_bottom_index(my_index,
-			a, b))
+	else if (in_bottom_index(my_index, a, b) || in_inter_bottom_idx(my_index, a,	b))
 	{
 		if ((a->size - my_index->index_a) < (b->size - my_index->index_b))
 			cost = b->size - my_index->index_b;
@@ -80,7 +73,12 @@ int	find_cost(t_index *my_index, t_stack *a, t_stack *b)
 			cost = a->size - my_index->index_a;
 	}
 	else
-		cost = my_index->index_a + my_index->index_b;
+	{
+		if (my_index->index_a < (a->size / 2))
+			cost = my_index->index_a + (b->size - my_index->index_b);
+		else
+			cost = my_index->index_b + (a->size - my_index->index_a);
+	}
 	return (cost);
 }
 

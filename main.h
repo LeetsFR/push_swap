@@ -6,7 +6,7 @@
 /*   By: mcollas <mcollas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 18:10:20 by mcollas           #+#    #+#             */
-/*   Updated: 2024/01/24 14:01:27 by mcollas          ###   ########.fr       */
+/*   Updated: 2024/01/25 02:01:11 by mcollas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 typedef enum
 {
 	false,
-	true
+	true,
 }				e_bool;
 
 typedef struct Index_Stack
@@ -31,6 +31,7 @@ typedef struct Index_Stack
 	int			index_a;
 	int			index_b;
 	int			cost;
+	e_bool		pos;
 }				t_index;
 
 typedef struct Stack
@@ -42,11 +43,11 @@ typedef struct Stack
 // ft_next_push.c
 void			push_in_top(t_index *next, t_stack *a, t_stack *b);
 void			push_in_bottom(t_index *next, t_stack *a, t_stack *b);
-void			push(t_index *next, t_stack *a, t_stack *b);
+void				push(t_index *next, t_stack *a, t_stack *b);
 
 // ft_cost.c
-e_bool in_inter_top_index(t_index *idx, t_stack *a, t_stack *b);
-e_bool in_inter_bottom_index(t_index *idx, t_stack *a, t_stack *b);
+e_bool			in_inter_top_idx(t_index *idx, t_stack *a, t_stack *b);
+e_bool			in_inter_bottom_idx(t_index *idx, t_stack *a, t_stack *b);
 e_bool			in_top_index(t_index *idx, t_stack *a, t_stack *b);
 e_bool			in_bottom_index(t_index *idx, t_stack *a, t_stack *b);
 int				find_cost(t_index *my_index, t_stack *a, t_stack *b);

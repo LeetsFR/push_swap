@@ -6,7 +6,7 @@
 /*   By: mcollas <mcollas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:46:44 by mcollas           #+#    #+#             */
-/*   Updated: 2024/01/24 14:32:48 by mcollas          ###   ########.fr       */
+/*   Updated: 2024/01/25 16:14:14 by mcollas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,59 @@ void	push_in_bottom(t_index *next, t_stack *a, t_stack *b)
 	}
 }
 
+void	push_in_2(t_index *next, t_stack *a, t_stack *b)
+{
+	int	i;
+
+	i = 0;
+	while (i < next->cost)
+	{
+		if (next->index_a < (a->size / 2))
+		{
+			if (next->index_a > 0)
+			{
+				next->index_a -= 1;
+				ft_ra(a);
+				i++;
+			}
+		}
+		else
+		{
+			if (next->index_a < a->size)
+			{
+				next->index_a += 1;
+				i++;
+				ft_rra(a);
+			}
+		}
+		if (next->index_b < (b->size / 2))
+		{
+			if (next->index_b > 0)
+			{
+				next->index_b -= 1;
+				i++;
+				ft_rb(b);
+			}
+		}
+		else
+		{
+			if (next->index_b < b->size)
+			{
+				next->index_b += 1;
+				i++;
+				ft_rra(b);
+			}
+		}
+	}
+}
+
 void	push(t_index *next, t_stack *a, t_stack *b)
 {
-	if (in_top_index(next, a, b) || in_inter_top_index(next,a,b))
+	if (in_top_index(next, a, b) || in_inter_top_idx(next, a, b))
 		push_in_top(next, a, b);
-	else if (in_bottom_index(next, a, b)|| in_inter_bottom_index(next,a,b))
+	else if (in_bottom_index(next, a, b) || in_inter_bottom_idx(next, a, b))
 		push_in_bottom(next, a, b);
 	else
-		printf("WE NEED THIS LINE");
+		push_in_2(next, a, b);
 	ft_pb(a, b);
 }

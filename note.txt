@@ -1,1 +1,1 @@
-Faire attention a in_top_index et in_bottom_index j'ai un doute sur le signe <=.
+Rajouter la position dans my_index sois top sois bottom pour next_push savoir ou on push
