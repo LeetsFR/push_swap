@@ -6,7 +6,7 @@
 /*   By: mcollas <mcollas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 23:40:43 by mcollas           #+#    #+#             */
-/*   Updated: 2024/01/25 16:23:16 by mcollas          ###   ########.fr       */
+/*   Updated: 2024/01/27 19:15:37 by mcollas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_index	next_push(t_stack *a, t_stack *b)
 	return (next);
 }
 
-void	ft_sort_a(t_stack *a)
+void	ft_sort_3(t_stack *a)
 {
 	if (a->tab[0] > a->tab[1] && (a->tab[0] > a->tab[2])
 		&& (a->tab[1] < a->tab[2]))
@@ -62,7 +62,6 @@ void	ft_sort_a(t_stack *a)
 	if (a->tab[2] < a->tab[0])
 		ft_rra(a);
 }
-
 void	push_swap(t_stack *a, t_stack *b)
 {
 	t_index	next;
@@ -74,12 +73,12 @@ void	push_swap(t_stack *a, t_stack *b)
 		while (a->size > 3)
 		{
 			next = next_push(a, b);
+           // printf("push = %ld l'index = %d a = %ld l'index = %d cout = %d SIZE A=%d B=%d\n", a->tab[next.index_a], next.index_a, b->tab[next.index_b], next.index_b, next.cost,a->size, b->size);
 			push(&next, a, b);
 		}
 	}
-	ft_sort_a(a);
+	ft_sort_3(a);
 }
-
 int	main(int argc, char **argv)
 {
 	t_stack	stack_a;
