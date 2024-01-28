@@ -6,7 +6,7 @@
 /*   By: mcollas <mcollas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:46:44 by mcollas           #+#    #+#             */
-/*   Updated: 2024/01/28 15:10:42 by mcollas          ###   ########.fr       */
+/*   Updated: 2024/01/28 16:13:02 by mcollas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	push_in_bottom(t_index *next, t_stack *a, t_stack *b)
 	}
 }
 
-void	push_in_2_p1(t_index *next, t_stack *a, t_stack *b)
+void	push_in_all_p1(t_index *next, t_stack *a, t_stack *b)
 {
 	int	i;
 
@@ -85,7 +85,8 @@ void	push_in_2_p1(t_index *next, t_stack *a, t_stack *b)
 		}
 	}
 }
-void	push_in_2_p2(t_index *next, t_stack *a, t_stack *b)
+
+void	push_in_all_p2(t_index *next, t_stack *a, t_stack *b)
 {
 	int	i;
 
@@ -105,13 +106,14 @@ void	push_in_2_p2(t_index *next, t_stack *a, t_stack *b)
 	}
 }
 
-void	push_in_2(t_index *next, t_stack *a, t_stack *b)
+void	push_in_all_index(t_index *next, t_stack *a, t_stack *b)
 {
 	if (next->index_a <= (a->size / 2) && next->index_b > (b->size / 2))
-		push_in_2_p1(next, a, b);
+		push_in_all_p1(next, a, b);
 	else if (next->index_a > (a->size / 2) && next->index_b <= (b->size / 2))
-		push_in_2_p2(next, a, b);
+		push_in_all_p2(next, a, b);
 }
+
 void	push(t_index *next, t_stack *a, t_stack *b)
 {
 	if (in_top_index(next, a, b))
@@ -119,6 +121,6 @@ void	push(t_index *next, t_stack *a, t_stack *b)
 	else if (in_bottom_index(next, a, b))
 		push_in_bottom(next, a, b);
 	else
-		push_in_2(next, a, b);
+		push_in_all_index(next, a, b);
 	ft_pb(a, b);
 }

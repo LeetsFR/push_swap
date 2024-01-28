@@ -6,7 +6,7 @@
 /*   By: mcollas <mcollas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 14:15:28 by mcollas           #+#    #+#             */
-/*   Updated: 2024/01/14 18:24:23 by mcollas          ###   ########.fr       */
+/*   Updated: 2024/01/28 16:16:31 by mcollas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,3 @@ void	ft_rrr(t_stack *stack_a, t_stack *stack_b)
 	stack_b->tab[0] = tmp;
 	ft_putstr("rrr\n");
 }
-

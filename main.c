@@ -6,7 +6,7 @@
 /*   By: mcollas <mcollas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 23:40:43 by mcollas           #+#    #+#             */
-/*   Updated: 2024/01/28 15:14:34 by mcollas          ###   ########.fr       */
+/*   Updated: 2024/01/28 17:39:07 by mcollas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,17 @@ void	ft_print_tab(t_stack *a, t_stack *b)
 	printf("\n");
 }
 
+void	the_push(t_index *next, t_stack *a, t_stack *b)
+{
+	if (in_top_index(next, a, b))
+		push_in_top(next, a, b);
+	else if (in_bottom_index(next, a, b))
+		push_in_bottom(next, a, b);
+	else
+		push_in_all_index(next, a, b);
+	ft_pb(a, b);
+}
+
 t_index	next_push(t_stack *a, t_stack *b)
 {
 	int		i;
@@ -44,24 +55,21 @@ t_index	next_push(t_stack *a, t_stack *b)
 	}
 	return (next);
 }
-
-void	ft_sort_3(t_stack *a)
+void	push_all_in_a(t_stack *a, t_stack *b)
 {
-	if (a->tab[0] > a->tab[1] && (a->tab[0] > a->tab[2])
-		&& (a->tab[1] < a->tab[2]))
-		ft_rra(a);
-	if (a->tab[0] > a->tab[1])
-		ft_sa(a);
-	if (a->tab[0] > a->tab[2])
-		ft_rra(a);
-	if (a->tab[1] > a->tab[2])
-	{
-		ft_ra(a);
-		ft_sa(a);
-	}
-	if (a->tab[2] < a->tab[0])
-		ft_rra(a);
+	int	i_b_max;
+
+	i_b_max = find_idx_max(b);
+	if (i_b_max <= (b->size / 2))
+		while (i_b_max-- > 0)
+			ft_rb(b);
+	else
+		while (i_b_max++ < b->size)
+			ft_rrb(b);
+    while(b->size > 0)
+        ft_pa(a,b);
 }
+
 void	push_swap(t_stack *a, t_stack *b)
 {
 	t_index	next;
@@ -70,15 +78,15 @@ void	push_swap(t_stack *a, t_stack *b)
 	{
 		ft_pb(a, b);
 		ft_pb(a, b);
-		while (a->size > 3)
+		while (a->size > 0)
 		{
 			next = next_push(a, b);
-           // printf("push = %ld l'index = %d a = %ld l'index = %d cout = %d SIZE A=%d B=%d\n", a->tab[next.index_a], next.index_a, b->tab[next.index_b], next.index_b, next.cost,a->size, b->size);
-			push(&next, a, b);
+			the_push(&next, a, b);
 		}
 	}
-	ft_sort_3(a);
+	push_all_in_a(a, b);
 }
+
 int	main(int argc, char **argv)
 {
 	t_stack	stack_a;
@@ -94,7 +102,6 @@ int	main(int argc, char **argv)
 			return (ft_putstr("Error\n"), 0);
 		stack_b.size = 0;
 		push_swap(&stack_a, &stack_b);
-        //ft_print_tab(&stack_a, &stack_b);
 		free(stack_a.tab);
 		free(stack_b.tab);
 	}

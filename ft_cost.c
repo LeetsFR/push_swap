@@ -6,7 +6,7 @@
 /*   By: mcollas <mcollas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 00:29:45 by mcollas           #+#    #+#             */
-/*   Updated: 2024/01/28 14:47:39 by mcollas          ###   ########.fr       */
+/*   Updated: 2024/01/28 16:14:56 by mcollas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	find_cost(t_index *my_index, t_stack *a, t_stack *b)
 	{
 		if (my_index->index_a <= (a->size / 2))
 			cost = my_index->index_a + (b->size - my_index->index_b);
-		else 
+		else
 			cost = my_index->index_b + (a->size - my_index->index_a);
 	}
 	return (cost);
