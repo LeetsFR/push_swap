@@ -6,7 +6,7 @@
 /*   By: mcollas <mcollas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 23:40:43 by mcollas           #+#    #+#             */
-/*   Updated: 2024/01/27 19:15:37 by mcollas          ###   ########.fr       */
+/*   Updated: 2024/01/28 15:14:34 by mcollas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ int	main(int argc, char **argv)
 			return (ft_putstr("Error\n"), 0);
 		stack_b.size = 0;
 		push_swap(&stack_a, &stack_b);
+        //ft_print_tab(&stack_a, &stack_b);
 		free(stack_a.tab);
 		free(stack_b.tab);
 	}
