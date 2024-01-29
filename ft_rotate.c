@@ -6,7 +6,7 @@
 /*   By: mcollas <mcollas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 13:56:36 by mcollas           #+#    #+#             */
-/*   Updated: 2024/01/14 18:24:45 by mcollas          ###   ########.fr       */
+/*   Updated: 2024/01/29 15:06:56 by mcollas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_ra(t_stack *stack)
 	tmp = stack->tab[0];
 	ft_move_backward(stack);
 	stack->tab[stack->size - 1] = tmp;
-	ft_putstr("ra\n");
+	ft_putstr_fd("ra\n", 1);
 }
 
 void	ft_rb(t_stack *stack)
@@ -29,7 +29,7 @@ void	ft_rb(t_stack *stack)
 	tmp = stack->tab[0];
 	ft_move_backward(stack);
 	stack->tab[stack->size - 1] = tmp;
-	ft_putstr("rb\n");
+	ft_putstr_fd("rb\n", 1);
 }
 
 void	ft_rr(t_stack *stack_a, t_stack *stack_b)
@@ -42,5 +42,5 @@ void	ft_rr(t_stack *stack_a, t_stack *stack_b)
 	tmp = stack_b->tab[0];
 	ft_move_backward(stack_b);
 	stack_b->tab[stack_b->size - 1] = tmp;
-	ft_putstr("rr\n");
+	ft_putstr_fd("rr\n", 1);
 }

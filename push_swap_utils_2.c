@@ -6,7 +6,7 @@
 /*   By: mcollas <mcollas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 13:31:22 by mcollas           #+#    #+#             */
-/*   Updated: 2024/01/14 16:26:22 by mcollas          ###   ########.fr       */
+/*   Updated: 2024/01/29 15:04:33 by mcollas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_iszero(long nbr, char *str)
 	return (0);
 }
 
-void	ft_putstr(char *str)
+void	ft_putstr_fd(char *str, int fd)
 {
-	write(1, str, ft_strlen(str));
+	write(fd, str, ft_strlen(str));
 }

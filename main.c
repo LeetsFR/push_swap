@@ -6,7 +6,7 @@
 /*   By: mcollas <mcollas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 23:40:43 by mcollas           #+#    #+#             */
-/*   Updated: 2024/01/29 12:58:45 by mcollas          ###   ########.fr       */
+/*   Updated: 2024/01/29 17:09:13 by mcollas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,10 +85,10 @@ int	main(int argc, char **argv)
 	{
 		stack_a = my_stack_a(argc, argv);
 		if (!stack_a.tab)
-			return (ft_putstr("Error\n"), 0);
+			return (ft_putstr_fd("Error\n", 2), 0);
 		stack_b.tab = malloc(stack_a.size * sizeof(long));
 		if (!stack_b.tab)
-			return (ft_putstr("Error\n"), 0);
+			return (ft_putstr_fd("Error\n", 2), 0);
 		stack_b.size = 0;
 		push_swap(&stack_a, &stack_b);
 		free(stack_a.tab);
