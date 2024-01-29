@@ -6,7 +6,7 @@
 /*   By: mcollas <mcollas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 23:40:43 by mcollas           #+#    #+#             */
-/*   Updated: 2024/01/28 17:39:07 by mcollas          ###   ########.fr       */
+/*   Updated: 2024/01/29 12:35:02 by mcollas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,20 +55,6 @@ t_index	next_push(t_stack *a, t_stack *b)
 	}
 	return (next);
 }
-void	push_all_in_a(t_stack *a, t_stack *b)
-{
-	int	i_b_max;
-
-	i_b_max = find_idx_max(b);
-	if (i_b_max <= (b->size / 2))
-		while (i_b_max-- > 0)
-			ft_rb(b);
-	else
-		while (i_b_max++ < b->size)
-			ft_rrb(b);
-    while(b->size > 0)
-        ft_pa(a,b);
-}
 
 void	push_swap(t_stack *a, t_stack *b)
 {
@@ -78,13 +64,17 @@ void	push_swap(t_stack *a, t_stack *b)
 	{
 		ft_pb(a, b);
 		ft_pb(a, b);
-		while (a->size > 0)
+		while (a->size > 3)
 		{
 			next = next_push(a, b);
 			the_push(&next, a, b);
 		}
+		ft_clear_a(a);
+		push_all_in_a(a, b);
+		verif(a);
 	}
-	push_all_in_a(a, b);
+	else
+		ft_clear_a(a);
 }
 
 int	main(int argc, char **argv)

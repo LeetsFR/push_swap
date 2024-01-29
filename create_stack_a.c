@@ -6,13 +6,13 @@
 /*   By: mcollas <mcollas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 17:33:03 by mcollas           #+#    #+#             */
-/*   Updated: 2024/01/14 16:57:17 by mcollas          ###   ########.fr       */
+/*   Updated: 2024/01/29 12:31:31 by mcollas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-e_bool	ft_no_duplicate(t_stack *stack)
+bool	ft_no_duplicate(t_stack *stack)
 {
 	int		i;
 	int		j;
@@ -34,7 +34,7 @@ e_bool	ft_no_duplicate(t_stack *stack)
 	return (true);
 }
 
-e_bool	ft_long_stack(char **arr, t_stack *stack)
+bool	ft_long_stack(char **arr, t_stack *stack)
 {
 	int		i;
 	long	tmp;
@@ -54,7 +54,7 @@ e_bool	ft_long_stack(char **arr, t_stack *stack)
 	return (ft_free_array(arr), true);
 }
 
-e_bool	ft_sort_wrong_arg(char **arr)
+bool	ft_sort_wrong_arg(char **arr)
 {
 	int	i;
 	int	j;

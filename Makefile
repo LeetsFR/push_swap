@@ -1,7 +1,8 @@
 NAME = push_swap
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g -O3 
-SRC_FILES = main.c create_stack_a.c ft_reverse.c ft_swap.c ft_push.c ft_rotate.c push_swap_split.c push_swap_utils.c push_swap_utils_2.c ft_rules_utils.c ft_next_push.c ft_cost.c ft_pos_index.c
+SRC_FILES = main.c create_stack_a.c ft_reverse.c ft_swap.c ft_push.c ft_rotate.c push_swap_split.c push_swap_utils.c push_swap_utils_2.c ft_rules_utils.c ft_next_push.c ft_cost.c ft_pos_index.c push_in_a.c
+SRC_BONUS =
 OBJ_FILES = $(SRC_FILES:.c=.o) 
 
 all: $(NAME)
