@@ -6,27 +6,11 @@
 /*   By: mcollas <mcollas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 23:40:43 by mcollas           #+#    #+#             */
-/*   Updated: 2024/01/29 12:35:02 by mcollas          ###   ########.fr       */
+/*   Updated: 2024/01/29 12:58:45 by mcollas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
-
-void	ft_print_tab(t_stack *a, t_stack *b)
-{
-	int	i;
-
-	i = -1;
-	printf("A =\n");
-	while (++i < a->size)
-		printf("%ld\n", a->tab[i]);
-	printf("\n");
-	i = -1;
-	printf("B =\n");
-	while (++i < b->size)
-		printf("%ld\n ", b->tab[i]);
-	printf("\n");
-}
 
 void	the_push(t_index *next, t_stack *a, t_stack *b)
 {
@@ -56,10 +40,25 @@ t_index	next_push(t_stack *a, t_stack *b)
 	return (next);
 }
 
+int	freepuntos(t_stack *a)
+{
+	int	i;
+
+	i = -1;
+	while (++i < a->size - 1)
+	{
+		if (a->tab[i] > a->tab[i + 1])
+			return (0);
+	}
+	return (1);
+}
+
 void	push_swap(t_stack *a, t_stack *b)
 {
 	t_index	next;
 
+	if (freepuntos(a))
+		return ;
 	if (a->size > 3)
 	{
 		ft_pb(a, b);
